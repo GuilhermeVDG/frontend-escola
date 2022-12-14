@@ -2,11 +2,11 @@
   <img src="../logo/logo.png"/>
   <div class="login">
     <form name="loginForm">
-      <input class="form-control" type="text" placeholder="Email"/>
-      <input class="form-control" type="text" placeholder="Nome"/>
-      <input class="form-control" type="text" placeholder="Senha"/>
-      <button class="btn btn-danger">Cadastrar</button>
-      <a href="#!/login">Possui uma conta? Entre</a>
+      <input class="form-control" type="text" placeholder="Email" ng-required="true"/>
+      <input class="form-control" type="text" placeholder="Nome" ng-required="true"/>
+      <input class="form-control" type="text" placeholder="Senha" ng-required="true"/>
     </form>
+    <button class="btn btn-danger" ng-disabled="loginForm.$invalid">Cadastrar</button>
+    <a href="#!/login">Possui uma conta? Entre</a>
   </div>
 </div>

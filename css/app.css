@@ -17,6 +17,7 @@
 .login {
   width: 600px;
   padding: 2rem 1.5rem;
+
 }
 
 .form-control {
@@ -32,5 +33,11 @@ button {
 a {
   display: flex;
   margin-top: 1rem;
+  justify-content: center;
+}
+
+.homeContainer {
+  display: flex;
+  align-items: center;
   justify-content: center;
 }

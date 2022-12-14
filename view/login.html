@@ -2,10 +2,10 @@
   <img src="../logo/logo.png"/>
   <div class="login">
     <form name="loginForm">
-      <input class="form-control" type="text" placeholder="Nome"/>
-      <input class="form-control" type="text" placeholder="Senha"/>
-      <button class="btn btn-danger">Entrar</button>
-      <a href="#!/cadastro">Não possui uma conta? Cadastre-se</a>
+      <input class="form-control" type="text" placeholder="Email" ng-required="true" ng-model="login.email" name="email" />
+      <input class="form-control" type="text" placeholder="Senha" ng-required="true" ng-model="login.password" name="email" />  
     </form>
+    <button class="btn btn-danger" ng-disabled="loginForm.$invalid" ng-click="submitLogin(login)">Entrar</button>
+    <a href="#!/cadastro">Não possui uma conta? Cadastre-se</a>
   </div>
 </div>
