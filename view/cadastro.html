@@ -2,11 +2,23 @@
   <img src="../logo/logo.png"/>
   <div class="cadastro">
     <form name="cadastroForm">
-      <input class="form-control" type="text" placeholder="Email" ng-required="true" ng-model="cadastro.email" name="email" />
+      <input class="form-control" type="email" placeholder="Email" ng-required="true" ng-model="cadastro.email" name="email" />
       <input class="form-control" type="text" placeholder="Nome" ng-required="true" ng-model="cadastro.name" name="name" />
-      <input class="form-control" type="text" placeholder="Senha" ng-required="true" ng-model="cadastro.password" name="password" />
+      <input class="form-control" type="password" placeholder="Senha" ng-required="true" ng-model="cadastro.password" name="password" ng-minlength="6" />
     </form>
     <button class="btn btn-danger" ng-disabled="cadastroForm.$invalid" ng-click="submitCadastro(cadastro)">Cadastrar</button>
+    <div ng-if="!cadastro.email && !cadastroForm.email.$pristine" class="alert alert-danger">
+      Insira um email válido!
+    </div>
+    <div ng-if="!cadastro.name && !cadastroForm.name.$pristine" class="alert alert-danger">
+      Nome é obrigatório!
+    </div>
+    <div ng-if="cadastroForm.password.$error.required && !cadastroForm.password.$pristine" class="alert alert-danger">
+      Senha é obrigatória!
+    </div>
+    <div ng-if="cadastroForm.password.$error.minlength && !cadastroForm.password.$pristine" class="alert alert-danger">
+      Senha deve ter no minímo 6 caracteres!
+    </div>
     <a href="#!/login">Possui uma conta? Entre</a>
   </div>
 </div>

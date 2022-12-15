@@ -46,3 +46,10 @@ a {
   align-items: center;
   justify-content: center;
 }
+
+.alert {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  height: 3rem;
+}
