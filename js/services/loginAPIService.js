@@ -1,7 +1,7 @@
-angular.module("mySchool").factory("loginAPI", function ($http) {
-  const _login = data => $http.post('http://localhost:3215/session', data);
+angular.module("mySchool").factory("loginAPI", function ($http, config) {
+  const _login = data => $http.post(`${config.baseUrl}/session`, data);
 
   return {
     login: _login
-  }
+  };
 });

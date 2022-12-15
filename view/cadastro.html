@@ -1,12 +1,12 @@
 <div class="container">
   <img src="../logo/logo.png"/>
-  <div class="login">
-    <form name="loginForm">
-      <input class="form-control" type="text" placeholder="Email" ng-required="true"/>
-      <input class="form-control" type="text" placeholder="Nome" ng-required="true"/>
-      <input class="form-control" type="text" placeholder="Senha" ng-required="true"/>
+  <div class="cadastro">
+    <form name="cadastroForm">
+      <input class="form-control" type="text" placeholder="Email" ng-required="true" ng-model="cadastro.email" name="email" />
+      <input class="form-control" type="text" placeholder="Nome" ng-required="true" ng-model="cadastro.name" name="name" />
+      <input class="form-control" type="text" placeholder="Senha" ng-required="true" ng-model="cadastro.password" name="password" />
     </form>
-    <button class="btn btn-danger" ng-disabled="loginForm.$invalid">Cadastrar</button>
+    <button class="btn btn-danger" ng-disabled="cadastroForm.$invalid" ng-click="submitCadastro(cadastro)">Cadastrar</button>
     <a href="#!/login">Possui uma conta? Entre</a>
   </div>
 </div>

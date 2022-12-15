@@ -1,26 +1,19 @@
 
 angular.module("mySchool").factory("localStorage", function ($window) {
   const _setToken = token => {
-      $window.localStorage.setItem('BearerToken', token);
-      $window.localStorage.setItem('TokenTime', new Date().getTime());
+      $window.localStorage.setItem('@school-token', token);
   };
 
   const _removeToken = () => {
-      $window.localStorage.removeItem('BearerToken');
-      $window.localStorage.removeItem('TokenTime');
+      $window.localStorage.removeItem('@school-token');
   };
 
   const _token = () => {
-      return $window.localStorage.getItem('BearerToken');
-  };
-
-  const _time = () => {
-      return $window.localStorage.getItem('TokenTime');
+      return $window.localStorage.getItem('@scholl-token');
   };
 
   return {
       token: _token,
-      time: _time,
       removeToken: _removeToken,
       setToken: _setToken,
   };

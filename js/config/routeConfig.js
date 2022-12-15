@@ -4,7 +4,8 @@ angular.module("mySchool").config(function($routeProvider) {
     controller: 'loginController'
   });
   $routeProvider.when("/cadastro", {
-    templateUrl: 'view/cadastro.html'
+    templateUrl: 'view/cadastro.html',
+    controller: 'cadastroController'  
   });
 
   $routeProvider.when("/home", {
