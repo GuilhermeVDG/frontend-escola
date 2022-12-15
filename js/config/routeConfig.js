@@ -11,4 +11,8 @@ angular.module("mySchool").config(function($routeProvider) {
   $routeProvider.when("/home", {
     templateUrl: 'view/home.html'
   });
+
+  $routeProvider.otherwise({
+    redirectTo: '/login'
+  });
 });
