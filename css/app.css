@@ -2,7 +2,6 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  background-color: #1d1d2e;
 }
 
 .container{
@@ -86,7 +85,6 @@ a {
 }
 
 .options a{
-  color: #fff;
   font-size: 22px;
   font-weight: bold;
   padding: 0 0.5rem;
@@ -95,7 +93,6 @@ a {
   text-decoration: none;
   transition: color 0.4s;
   white-space: nowrap;
-  border: solid #ff3f4b 1px;
   border-radius: 0.3rem;
   margin-left: 2rem;
 }
@@ -105,15 +102,19 @@ a {
 }
 
 .logout {
-  
+  color: #ff3f4b;
   cursor: pointer;
-  transition: transform .2s ease;
+
 }
 
-.logut:hover img {
-  transform: scale(1.2);
+.logut:hover{
+  color: blue;
 }
 
+.table {
+  margin-top: 1.5rem;
+  background-color: #fff;
+}
 
 
 

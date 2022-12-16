@@ -5,7 +5,7 @@
       <input class="form-control" type="email" placeholder="Email" ng-required="true" ng-model="login.email" name="email" />
       <input class="form-control" type="password" placeholder="Senha" ng-required="true" ng-model="login.password" name="password" />  
     </form>
-    <button class="btn btn-danger" ng-disabled="loginForm.$invalid" ng-click="submitLogin(login)">Entrar</button>
+    <button class="btn btn-primary" ng-disabled="loginForm.$invalid" ng-click="submitLogin(login)">Entrar</button>
     <div ng-if="!login.email && !loginForm.email.$pristine" class="alert alert-danger">
       Email é obrigatório!
     </div>

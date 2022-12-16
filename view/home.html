@@ -1,4 +1,22 @@
 <div ng-include="'view/header.html'"></div>
 <div class="homeContainer">
-  <h1>HOME</h1>
+  <input ng-change="filterAll(alunos, filter)" ng-model="filter" placeholder="Filtre" class="form-control filter">
+  <table class="table table-striped">
+    <tr>
+      <th></th>
+      <th class="teste">ID</th>
+      <th>Nome</th>
+      <th>Sobrenome</th>
+      <th>Email</th>
+      <th>Idade</th>
+    </tr>
+    <tr ng-class="{selecionado: contato.selecionado}" ng-repeat="aluno in alunos">
+      <td></td>
+      <td>{{aluno.id}}</td>
+      <td>{{aluno.name}}</td>
+      <td>{{aluno.surname}}</td>
+      <td>{{aluno.email}}</td>
+      <td>{{aluno.age}}</td>
+    </tr>
+  </table>
 </div>
