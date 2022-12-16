@@ -9,7 +9,7 @@ angular.module("mySchool").factory("localStorage", function ($window) {
   };
 
   const _token = () => {
-      return $window.localStorage.getItem('@scholl-token');
+      return $window.localStorage.getItem('@school-token');
   };
 
   return {

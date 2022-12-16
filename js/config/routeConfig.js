@@ -9,7 +9,16 @@ angular.module("mySchool").config(function($routeProvider) {
   });
 
   $routeProvider.when("/home", {
-    templateUrl: 'view/home.html'
+    templateUrl: 'view/home.html',
+    controller: 'homeController',
+    resolve: {
+      students : function(homeAPI, localStorage, $location){
+        if(!localStorage.token()){
+          $location.path('/login');
+        };
+        return homeAPI.getAlunos();
+      }
+    }
   });
 
   $routeProvider.otherwise({
