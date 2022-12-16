@@ -11,7 +11,7 @@
       <th>Email</th>
       <th>Idade</th>
     </tr>
-    <tr ng-class="{selecionado: contato.selecionado}" ng-repeat="aluno in alunos">
+    <tr ng-class="{selecionado: contato.selecionado}" ng-repeat="aluno in pages[index]">
       <td></td>
       <td>{{aluno.id}}</td>
       <td><img src="{{baseUrl}}/{{aluno.Fotos[0].filename}}" class="rounded-circle" width="50px" height="50px"/></td>
@@ -21,4 +21,8 @@
       <td>{{aluno.age}}</td>
     </tr>
   </table>
+  <div class="paginationContainer">
+    <button class="btn btn-primary" ng-click="backPage()"><<</button>
+    <button class="btn btn-primary" ng-click="nextPage()">>></button>
+  </div>
 </div>
