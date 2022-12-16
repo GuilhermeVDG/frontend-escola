@@ -1,5 +1,5 @@
-angular.module("mySchool").controller("homeController", function ($scope, students, config, localStorage, $location) {
-  console.log(students.data);
+angular.module("mySchool").controller("homeController", function ($scope, students, config, localStorage, $location, $filter) {
+  $scope.students = students.data;
   $scope.baseUrl = config.baseUrl;
   $scope.totalPages = Math.ceil(students.data.length / 6);
 
@@ -35,6 +35,14 @@ angular.module("mySchool").controller("homeController", function ($scope, studen
 
   $scope.gotoPage = page => {
     $scope.index = page;
+  };
+
+  $scope.filterStudents = (students, value) => {
+    const listAlunos = $filter('filter')(students, value);
+    console.log(listAlunos);
+    $scope.pages = formatPages(listAlunos);
+    $scope.totalPages = Math.ceil(listAlunos.length / 6);
+    $scope.index = 0;
   };
 
 });
