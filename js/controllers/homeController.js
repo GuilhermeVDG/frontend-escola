@@ -1,6 +1,7 @@
 angular.module("mySchool").controller("homeController", function ($scope, students, config, localStorage, $location) {
   console.log(students.data);
   $scope.baseUrl = config.baseUrl;
+  $scope.totalPages = Math.ceil(students.data.length / 6);
 
   $scope.signOut = () => {
     localStorage.removeToken();
@@ -30,6 +31,10 @@ angular.module("mySchool").controller("homeController", function ($scope, studen
 
   $scope.backPage = () => {
     $scope.index -= 1;
+  };
+
+  $scope.gotoPage = page => {
+    $scope.index = page;
   };
 
 });

@@ -22,7 +22,8 @@
     </tr>
   </table>
   <div class="paginationContainer">
-    <button class="btn btn-primary" ng-click="backPage()"><<</button>
-    <button class="btn btn-primary" ng-click="nextPage()">>></button>
+    <button class="btn btn-primary" ng-click="backPage()" ng-disabled="index === 0"><<</button>
+    <button class="btn btn-primary" ng-repeat="page in pages" ng-disabled="index === pages.indexOf(page)" ng-click="gotoPage(pages.indexOf(page))">{{pages.indexOf(page) + 1}}</button>
+    <button class="btn btn-primary" ng-click="nextPage()" ng-disabled="index === (totalPages- 1)">>></button>
   </div>
 </div>
