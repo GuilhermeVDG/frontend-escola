@@ -1,7 +1,9 @@
-angular.module("mySchool").controller("homeController", function ($scope, students, config, localStorage, $location, $filter) {
+angular.module("mySchool").controller("homeController", function ($scope, students, config, localStorage, $location, $filter, homeAPI, $timeout) {
   $scope.students = students.data;
   $scope.baseUrl = config.baseUrl;
   $scope.totalPages = Math.ceil(students.data.length / 6);
+  $scope.index = 0;
+
 
   $scope.signOut = () => {
     localStorage.removeToken();
@@ -23,7 +25,7 @@ angular.module("mySchool").controller("homeController", function ($scope, studen
   };
 
   $scope.pages = formatPages(students.data);
-  $scope.index = 0;
+
 
   $scope.nextPage = () => {
     $scope.index += 1;
@@ -54,11 +56,24 @@ angular.module("mySchool").controller("homeController", function ($scope, studen
     if($scope.modalForm.display === 'none') {
       $scope.modalForm.display = 'block';
     } else if($scope.modalForm.display === 'block'){
-      console.log('porra');
-      
       $scope.novoAluno = {};
       $scope.modalForm.display = 'none';
     }
   };
 
+  $scope.addAluno = data => {
+    console.log(data);
+    if(!data) return;
+    homeAPI.addAluno(data)
+      .then(res => {
+        $timeout(() => {
+          $scope.students.unshift(res.data);
+          $scope.pages = formatPages($scope.students);
+          $scope.totalPages = Math.ceil($scope.students / 6);
+
+          $scope.setModalAddAlunos();
+        }); 
+      })
+      .catch(err => console.log(err));
+  };
 });
