@@ -1,0 +1,23 @@
+<div class="modal" ng-style="modalForm">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Adicionar um novo aluno:</h3>
+        <button type="button" class="btn btn-close" ng-click="setModalAddAlunos()"></button>
+      </div>
+      <div class="modal-body">
+        <label class="form-label">Nome:</label>
+        <input class="form-control" ng-model="novoAluno.name" name="name"/>
+        <label class="form-label">Sobrenome:</label>
+        <input class="form-control" ng-model="novoAluno.surname" name="surname" />
+        <label class="form-label">Email:</label>
+        <input class="form-control" ng-model="novoAluno.email" name="email"/>
+        <label class="form-label">Idade:</label>
+        <input class="form-control" ng-model="novoAluno.age" name="age"/>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary">Adicionar</button>
+      </div>
+    </div>
+  </div>
+</div>

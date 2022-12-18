@@ -45,4 +45,20 @@ angular.module("mySchool").controller("homeController", function ($scope, studen
     $scope.index = 0;
   };
 
+  $scope.modalForm = {
+    'display': 'none'
+  };
+
+  $scope.setModalAddAlunos = () => {
+
+    if($scope.modalForm.display === 'none') {
+      $scope.modalForm.display = 'block';
+    } else if($scope.modalForm.display === 'block'){
+      console.log('porra');
+      
+      $scope.novoAluno = {};
+      $scope.modalForm.display = 'none';
+    }
+  };
+
 });

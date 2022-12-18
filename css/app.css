@@ -125,4 +125,17 @@ a {
   margin-left: 0.4rem;
 }
 
+.modal {
+  display: none;
+  background-color: rgba(0, 0, 0, 0.459);
+}
+
+.modal-content {
+  border: 0px;
+} 
+.add-alunos {
+  color: blue;
+  cursor: pointer;
+}
+
 
