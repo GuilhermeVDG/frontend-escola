@@ -1,0 +1,26 @@
+<div class="modal" ng-style="modalFoto">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Adicionar foto:</h3>
+        <button type="button" class="btn btn-close" ng-click="setModalFotos()"></button>
+      </div>
+      <div class="modal-body">
+        <form enctype="multipart/form-data">
+          <input ng-model="image.file" ng-file-select="onFileSelect($files)" class="form-control form-control-lg" type="file" id="formFileLg" accept=".jpg, .jpeg, .png">
+          <div>
+            <img ng-src="{{imageSrc}}" class="rounded-circle" style="max-width: 100%;" height="400px" ng-if="imageSrc">
+          </div>
+          <label for="aluno">Selecione o aluno:</label>
+          <select name="aluno" class="form-select" ng-model="aluno"
+              ng-options="(aluno.id + ' - ' + aluno.name  + ' ' + aluno.surname) for aluno in students">
+              <option value="">Aluno</option>
+          </select>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="sendImg(aluno, imageSrc)">Adicionar</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-angular.module("mySchool").controller("homeController", function ($scope, students, config, localStorage, $location, $filter, homeAPI, $timeout) {
+angular.module("mySchool").controller("homeController", function ($scope, students, config, localStorage, $location, $filter, homeAPI, $timeout, fileReader, $window) {
   $scope.students = students.data;
   $scope.baseUrl = config.baseUrl;
   $scope.totalPages = Math.ceil(students.data.length / 6);
@@ -51,6 +51,10 @@ angular.module("mySchool").controller("homeController", function ($scope, studen
     'display': 'none'
   };
 
+  $scope.modalFoto = {
+    'display': 'none'
+  };
+
   $scope.setModalAddAlunos = () => {
 
     if($scope.modalForm.display === 'none') {
@@ -62,7 +66,6 @@ angular.module("mySchool").controller("homeController", function ($scope, studen
   };
 
   $scope.addAluno = data => {
-    console.log(data);
     if(!data) return;
     homeAPI.addAluno(data)
       .then(res => {
@@ -75,5 +78,27 @@ angular.module("mySchool").controller("homeController", function ($scope, studen
         }); 
       })
       .catch(err => console.log(err));
+  };
+
+  $scope.setModalFotos = () => {
+    if($scope.modalFoto.display === 'none'){
+      $scope.modalFoto.display = 'block';
+    } else if($scope.modalFoto.display === 'block') {
+      $scope.modalFoto.display = 'none';
+    }
+  };
+
+  $scope.getFile = (file) => {
+    fileReader.readAsDataUrl(file, $scope)
+      .then(result => $scope.imageSrc = result);
+  };
+
+  $scope.sendImg = function (aluno, image) {
+    const originalname = document.getElementById('formFileLg').value.substr(12);
+    
+    homeAPI.sendImage(aluno, image, originalname).then(res => {
+      $scope.setModalFotos();
+      $window.location.reload();
+    }).catch(err => console.log(err));
   };
 });
