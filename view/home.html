@@ -1,6 +1,7 @@
 <div ng-include="'view/header.html'"></div>
 <div ng-include="'view/createAlunoModal.html'"></div>
 <div ng-include="'view/addFotoModal.html'"></div>
+<div ng-include="'view/editAlunoModal.html'"></div>
 
 <div class="homeContainer">
   <input ng-change="filterStudents(students, filter)" ng-model="filter" placeholder="Buscar aluno..." class="form-control filter">
@@ -13,6 +14,7 @@
       <th>Sobrenome</th>
       <th>Email</th>
       <th>Idade</th>
+      <th></th>
     </tr>
     <tr ng-class="{selecionado: contato.selecionado}" ng-repeat="aluno in pages[index]">
       <td></td>
@@ -22,6 +24,7 @@
       <td>{{aluno.surname}}</td>
       <td>{{aluno.email}}</td>
       <td>{{aluno.age}}</td>
+      <td><button class="btn btn-secondary" ng-click="setModalEditAluno(aluno)" type="button">Editar</button></td>
     </tr>
   </table>
   <div class="paginationContainer">

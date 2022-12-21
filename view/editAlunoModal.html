@@ -1,0 +1,28 @@
+<div class="modal" ng-style="modalEdit">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Aluno: {{alunoEdit.name}}</h3>
+        <button type="button" class="btn btn-close" ng-click="setModalEditAluno()"></button>
+      </div>
+      <div class="modal-body">
+        <input type="checkbox" ng-model="alunoEdit.nameSelected"/>
+        <label class="form-label">Nome:</label>
+        <input class="form-control" ng-model="alunoEdit.name" name="name" value="{{alunoEdit.name}}" ng-disabled="!alunoEdit.nameSelected"/>
+        <input type="checkbox" ng-model="alunoEdit.surnameSelected"/>
+        <label class="form-label">Sobrenome:</label>
+        <input class="form-control" ng-model="alunoEdit.surname" name="surname" value="{{alunoEdit.surname}}" ng-disabled="!alunoEdit.surnameSelected"/>
+        <input type="checkbox" ng-model="alunoEdit.emailSelected"/>
+        <label class="form-label">Email:</label>
+        <input class="form-control" ng-model="alunoEdit.email" name="email" value="{{alunoEdit.email}}" ng-disabled="!alunoEdit.emailSelected"/>
+        <input type="checkbox" ng-model="alunoEdit.ageSelected"/>
+        <label class="form-label">Idade:</label>
+        <input class="form-control" ng-model="alunoEdit.age" name="age" value="{{alunoEdit.age}}" ng-disabled="!alunoEdit.ageSelected"/>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Editar</button>
+        <button type="button" class="btn btn-danger">Apagar</button>
+      </div>
+    </div>
+  </div>
+</div>

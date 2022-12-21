@@ -55,6 +55,10 @@ angular.module("mySchool").controller("homeController", function ($scope, studen
     'display': 'none'
   };
 
+  $scope.modalEdit = {
+    'display': 'none'
+  };
+
   $scope.setModalAddAlunos = () => {
 
     if($scope.modalForm.display === 'none') {
@@ -100,5 +104,14 @@ angular.module("mySchool").controller("homeController", function ($scope, studen
       $scope.setModalFotos();
       $window.location.reload();
     }).catch(err => console.log(err));
+  };
+
+  $scope.setModalEditAluno = (aluno) => {
+    if($scope.modalEdit.display === 'none'){
+      $scope.modalEdit.display = 'block';
+    } else if($scope.modalEdit.display === 'block') {
+      $scope.modalEdit.display = 'none';
+    }
+    $scope.alunoEdit = { ...aluno };
   };
 });
