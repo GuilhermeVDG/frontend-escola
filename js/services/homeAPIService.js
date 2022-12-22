@@ -17,9 +17,14 @@ angular.module("mySchool").factory("homeAPI", function($http, config) {
   });
   };
 
+  const _editAluno = aluno => {
+    return $http.put(`${config.baseUrl}/students/${aluno.id}`, aluno);
+  };
+
   return {
     getAlunos : _getAlunos,
     addAluno: _addAluno,
-    sendImage: _sendImage
+    sendImage: _sendImage,
+    editAluno: _editAluno
   };
 });

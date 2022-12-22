@@ -106,12 +106,21 @@ angular.module("mySchool").controller("homeController", function ($scope, studen
     }).catch(err => console.log(err));
   };
 
-  $scope.setModalEditAluno = (aluno) => {
+  $scope.setModalEditAluno = aluno => {
     if($scope.modalEdit.display === 'none'){
       $scope.modalEdit.display = 'block';
     } else if($scope.modalEdit.display === 'block') {
       $scope.modalEdit.display = 'none';
     }
     $scope.alunoEdit = { ...aluno };
+  };
+
+  $scope.editAluno = aluno => {
+    homeAPI.editAluno(aluno)
+      .then(res => {
+        $scope.setModalEditAluno();
+        $window.location.reload();
+      })
+      .catch(err => console.log(err));
   };
 });
