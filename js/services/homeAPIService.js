@@ -21,10 +21,13 @@ angular.module("mySchool").factory("homeAPI", function($http, config) {
     return $http.put(`${config.baseUrl}/students/${aluno.id}`, aluno);
   };
 
+  const _deleteAluno = id => $http.delete(`${config.baseUrl}/students/${id}`);
+
   return {
     getAlunos : _getAlunos,
     addAluno: _addAluno,
     sendImage: _sendImage,
-    editAluno: _editAluno
+    editAluno: _editAluno,
+    deleteAluno: _deleteAluno
   };
 });

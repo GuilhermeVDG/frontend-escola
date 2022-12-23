@@ -123,4 +123,13 @@ angular.module("mySchool").controller("homeController", function ($scope, studen
       })
       .catch(err => console.log(err));
   };
+
+  $scope.deleteAluno = id => {
+    homeAPI.deleteAluno(id)
+      .then(res => {
+        $scope.setModalEditAluno();
+        $window.location.reload();
+      })
+      .catch(err => console.log(err));
+  };
 });
