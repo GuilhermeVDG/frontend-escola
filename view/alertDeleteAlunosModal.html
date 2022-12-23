@@ -1,0 +1,15 @@
+<div class="modal modal-alert" ng-style="modalAlertDelete">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title">Aluno: {{alunoEdit.name}}</div>
+        <button class="btn btn-close" ng-click="setModalAlertDeleteAluno()"></button>
+      </div>
+      <div class="modal-body">Certeza que deseja apagar o aluno {{alunoEdit.name}}?</div>
+      <div class="modal-footer modal-footer-align">
+        <button class="btn btn-danger" ng-click="deleteAluno(alunoEdit.id)">Apagar</button>
+        <button class="btn btn-secondary" ng-click="setModalAlertDeleteAluno()">Voltar</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -59,6 +59,10 @@ angular.module("mySchool").controller("homeController", function ($scope, studen
     'display': 'none'
   };
 
+  $scope.modalAlertDelete = {
+    'display': 'none'
+  };
+
   $scope.setModalAddAlunos = () => {
 
     if($scope.modalForm.display === 'none') {
@@ -127,9 +131,18 @@ angular.module("mySchool").controller("homeController", function ($scope, studen
   $scope.deleteAluno = id => {
     homeAPI.deleteAluno(id)
       .then(res => {
+        $scope.setModalAlertDeleteAluno();
         $scope.setModalEditAluno();
         $window.location.reload();
       })
       .catch(err => console.log(err));
+  };
+
+  $scope.setModalAlertDeleteAluno = () => {
+    if($scope.modalAlertDelete.display === 'none'){
+      $scope.modalAlertDelete.display = 'block';
+    } else if($scope.modalAlertDelete.display === 'block') {
+      $scope.modalAlertDelete.display = 'none';
+    }
   };
 });
