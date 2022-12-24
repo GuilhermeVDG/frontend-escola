@@ -1,0 +1,15 @@
+<div class="modal" ng-style="modalAlertAddFoto">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Aluno: {{info.aluno.name}}</h3>
+        <div class="btn btn-close" ng-click="setModalAlertAddFoto()"></div>
+      </div>
+      <div class="modal-body">{{info.aluno.name}} já possui uma foto. Deseja alterar?</div>
+      <div class="modal-footer">
+        <div class="btn btn-primary" ng-click="updateImg()">Alterar</div>
+        <div class="btn btn-secondary" ng-click="setModalAlertAddFoto()">Voltar</div>
+      </div>
+    </div>
+  </div>
+</div>

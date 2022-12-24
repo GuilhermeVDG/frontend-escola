@@ -63,6 +63,10 @@ angular.module("mySchool").controller("homeController", function ($scope, studen
     'display': 'none'
   };
 
+  $scope.modalAlertAddFoto = {
+    'display': 'none'
+  };
+
   $scope.setModalAddAlunos = () => {
 
     if($scope.modalForm.display === 'none') {
@@ -103,6 +107,12 @@ angular.module("mySchool").controller("homeController", function ($scope, studen
 
   $scope.sendImg = function (aluno, image) {
     const originalname = document.getElementById('formFileLg').value.substr(12);
+
+    if(aluno.Fotos[0]){
+      $scope.info = { aluno, image, originalname };
+      $scope.setModalAlertAddFoto();
+      return;
+    };
     
     homeAPI.sendImage(aluno, image, originalname).then(res => {
       $scope.setModalFotos();
@@ -144,5 +154,31 @@ angular.module("mySchool").controller("homeController", function ($scope, studen
     } else if($scope.modalAlertDelete.display === 'block') {
       $scope.modalAlertDelete.display = 'none';
     }
+  };
+
+  $scope.setModalAlertAddFoto = () => {
+    if($scope.modalAlertAddFoto.display === 'none'){
+      $scope.modalAlertAddFoto.display = 'block';
+    } else if($scope.modalAlertAddFoto.display === 'block') {
+      $scope.modalAlertAddFoto.display = 'none';
+    }
+  };
+
+  $scope.updateImg = () => {
+    const { aluno, image, originalname } = $scope.info;
+
+    if(!aluno.Fotos[0]){
+      $scope.setModalAlertAddFoto;
+      return;
+    }
+
+    homeAPI.sendImage(aluno, image, originalname)
+      .then(res => {
+        console.log(aluno.Fotos);
+        $scope.setModalAlertAddFoto();
+        $scope.setModalFotos();
+        $window.location.reload();
+      })
+      .catch(err => console.log(err));
   };
 });
