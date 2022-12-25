@@ -67,6 +67,10 @@ angular.module("mySchool").controller("homeController", function ($scope, studen
     'display': 'none'
   };
 
+  $scope.modalEditUser = {
+    'display': 'none'
+  };
+
   $scope.setModalAddAlunos = () => {
 
     if($scope.modalForm.display === 'none') {
@@ -127,6 +131,7 @@ angular.module("mySchool").controller("homeController", function ($scope, studen
       $scope.modalEdit.display = 'none';
     }
     $scope.alunoEdit = { ...aluno };
+    console.log('oi');
   };
 
   $scope.editAluno = aluno => {
@@ -174,11 +179,24 @@ angular.module("mySchool").controller("homeController", function ($scope, studen
 
     homeAPI.sendImage(aluno, image, originalname)
       .then(res => {
-        console.log(aluno.Fotos);
         $scope.setModalAlertAddFoto();
         $scope.setModalFotos();
         $window.location.reload();
       })
       .catch(err => console.log(err));
+  };
+
+  $scope.setModalEditUser = () => {
+    homeAPI.detailUser()
+      .then(res => {
+        $scope.userEdit = { ...res.data };
+      })
+      .catch(err => console.log(err));
+    
+    if($scope.modalEditUser.display === 'none'){
+      $scope.modalEditUser.display = 'block';
+    } else if($scope.modalEditUser.display === 'block') {
+      $scope.modalEditUser.display = 'none';
+    }  
   };
 });

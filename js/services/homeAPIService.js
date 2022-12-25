@@ -23,11 +23,14 @@ angular.module("mySchool").factory("homeAPI", function($http, config) {
 
   const _deleteAluno = id => $http.delete(`${config.baseUrl}/students/${id}`);
 
+  const _detailUser = () => $http.get(`${config.baseUrl}/detail`);
+
   return {
     getAlunos : _getAlunos,
     addAluno: _addAluno,
     sendImage: _sendImage,
     editAluno: _editAluno,
-    deleteAluno: _deleteAluno
+    deleteAluno: _deleteAluno,
+    detailUser: _detailUser
   };
 });

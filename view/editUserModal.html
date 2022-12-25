@@ -1,0 +1,29 @@
+<div class="modal" ng-style="modalEditUser">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Meu Perfil:</h3>
+        <button type="button" class="btn btn-close" ng-click="setModalEditUser()"></button>
+      </div>
+      <div class="modal-body">
+        <label class="form-label">Nome:</label>
+        <div class="input-group">
+          <input class="form-control" ng-model="userEdit.name" name="name" value="{{userEdit.name}}" ng-disabled="!userEdit.nameSelected"/>
+          <div class="input-group-text mb-3">
+            <input type="checkbox" ng-model="userEdit.nameSelected"/>
+          </div>
+        </div>
+        <label class="form-label">Email:</label>
+        <div class="input-group">
+          <input class="form-control" ng-model="userEdit.email" name="email" value="{{userEdit.email}}" ng-disabled="!userEdit.emailSelected"/>
+          <div class="input-group-text mb-3">
+            <input type="checkbox" ng-model="userEdit.emailSelected"/>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" ng-click="editUser(userEdit)">Editar</button>
+      </div>
+    </div>
+  </div>
+</div>

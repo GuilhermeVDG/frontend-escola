@@ -137,3 +137,7 @@ a {
   color: blue;
   cursor: pointer;
 }
+
+.edit-user {
+  cursor: pointer;
+}
