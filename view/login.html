@@ -6,6 +6,9 @@
       <input class="form-control" type="password" placeholder="Senha" ng-required="true" ng-model="login.password" name="password" />  
     </form>
     <button class="btn btn-primary" ng-disabled="loginForm.$invalid" ng-click="submitLogin(login)">Entrar</button>
+    <div ng-if="alertLogin" class="alert alert-danger">
+      Email ou senha inválidos!
+    </div>
     <div ng-if="!login.email && !loginForm.email.$pristine" class="alert alert-danger">
       Email é obrigatório!
     </div>
