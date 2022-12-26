@@ -199,4 +199,13 @@ angular.module("mySchool").controller("homeController", function ($scope, studen
       $scope.modalEditUser.display = 'none';
     }  
   };
+
+  $scope.editUser = user => {
+    homeAPI.editUser(user)
+      .then(res => {
+        $scope.setModalEditUser();
+        $window.location.reload();
+      })
+      .catch(err => console.log(err));
+  };
 });

@@ -25,12 +25,15 @@ angular.module("mySchool").factory("homeAPI", function($http, config) {
 
   const _detailUser = () => $http.get(`${config.baseUrl}/detail`);
 
+  const _editUser = user => $http.put(`${config.baseUrl}/update`, user);
+
   return {
     getAlunos : _getAlunos,
     addAluno: _addAluno,
     sendImage: _sendImage,
     editAluno: _editAluno,
     deleteAluno: _deleteAluno,
-    detailUser: _detailUser
+    detailUser: _detailUser,
+    editUser: _editUser
   };
 });
