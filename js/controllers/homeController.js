@@ -3,6 +3,7 @@ angular.module("mySchool").controller("homeController", function ($scope, studen
   $scope.baseUrl = config.baseUrl;
   $scope.totalPages = Math.ceil(students.data.length / 6);
   $scope.index = 0;
+  $scope.changePasswordSelected = false;
 
 
   $scope.signOut = () => {
@@ -208,4 +209,12 @@ angular.module("mySchool").controller("homeController", function ($scope, studen
       })
       .catch(err => console.log(err));
   };
+
+  $scope.setChangePassword = () => {
+    if(!$scope.changePasswordSelected) {
+      $scope.changePasswordSelected = true;
+      return;
+    }
+    $scope.changePasswordSelected = false;
+  }
 });
