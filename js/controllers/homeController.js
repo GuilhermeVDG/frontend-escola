@@ -4,6 +4,7 @@ angular.module("mySchool").controller("homeController", function ($scope, studen
   $scope.totalPages = Math.ceil(students.data.length / 6);
   $scope.index = 0;
   $scope.changePasswordSelected = false;
+  $scope.alertEditAluno = false;
 
 
   $scope.signOut = () => {
@@ -130,9 +131,9 @@ angular.module("mySchool").controller("homeController", function ($scope, studen
       $scope.modalEdit.display = 'block';
     } else if($scope.modalEdit.display === 'block') {
       $scope.modalEdit.display = 'none';
+      $scope.alertEditAluno = false;
     }
     $scope.alunoEdit = { ...aluno };
-    console.log('oi');
   };
 
   $scope.editAluno = aluno => {
@@ -141,7 +142,11 @@ angular.module("mySchool").controller("homeController", function ($scope, studen
         $scope.setModalEditAluno();
         $window.location.reload();
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        if(err.data.error.msg === 'EMAIL_MUST_BEEN_UNIQUE') {
+          $scope.alertEditAluno = true;
+        }
+      });
   };
 
   $scope.deleteAluno = id => {

@@ -34,9 +34,12 @@
             <input type="checkbox" ng-model="alunoEdit.ageSelected"/>
           </div>
         </div>
+        <div ng-if="alertEditAluno" class="alert alert-danger">
+          Email já está em uso!
+        </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" ng-click="editAluno(alunoEdit)">Editar</button>
+        <button type="button" class="btn btn-primary" ng-click="editAluno(alunoEdit)" ng-disabled="!(alunoEdit.nameSelected || alunoEdit.surnameSelected || alunoEdit.emailSelected || alunoEdit.ageSelected)">Editar</button>
         <button type="button" class="btn btn-danger" ng-click="setModalAlertDeleteAluno()">Apagar</button>
       </div>
     </div>
