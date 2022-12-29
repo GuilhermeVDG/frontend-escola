@@ -6,40 +6,42 @@
         <button type="button" class="btn btn-close" ng-click="setModalEditAluno()"></button>
       </div>
       <div class="modal-body">
-        <label class="form-label">Nome:</label>
-        <div class="input-group">
-          <input class="form-control" ng-model="alunoEdit.name" name="name" value="{{alunoEdit.name}}" ng-disabled="!alunoEdit.nameSelected"/>
-          <div class="input-group-text mb-3">
-            <input type="checkbox" ng-model="alunoEdit.nameSelected"/>
+        <form name="editAlunoForm">
+          <label class="form-label">Nome:</label>
+          <div class="input-group">
+            <input class="form-control" ng-model="alunoEdit.name" name="name" value="{{alunoEdit.name}}" ng-disabled="!alunoEdit.nameSelected" ng-required="true" ng-minlength="3" ng-maxlength="20"/>
+            <div class="input-group-text mb-3">
+              <input type="checkbox" ng-model="alunoEdit.nameSelected"/>
+            </div>
           </div>
-        </div>
-        <label class="form-label">Sobrenome:</label>
-        <div class="input-group">
-          <input class="form-control" ng-model="alunoEdit.surname" name="surname" value="{{alunoEdit.surname}}" ng-disabled="!alunoEdit.surnameSelected"/>
-          <div class="input-group-text mb-3">
-            <input type="checkbox" ng-model="alunoEdit.surnameSelected"/>
+          <label class="form-label">Sobrenome:</label>
+          <div class="input-group">
+            <input class="form-control" ng-model="alunoEdit.surname" name="surname" value="{{alunoEdit.surname}}" ng-disabled="!alunoEdit.surnameSelected" ng-required="true" ng-minlength="3" ng-maxlength="20"/>
+            <div class="input-group-text mb-3">
+              <input type="checkbox" ng-model="alunoEdit.surnameSelected"/>
+            </div>
           </div>
-        </div>
-        <label class="form-label">Email:</label>
-        <div class="input-group">
-          <input class="form-control" ng-model="alunoEdit.email" name="email" value="{{alunoEdit.email}}" ng-disabled="!alunoEdit.emailSelected"/>
-          <div class="input-group-text mb-3">
-            <input type="checkbox" ng-model="alunoEdit.emailSelected"/>
+          <label class="form-label">Email:</label>
+          <div class="input-group">
+            <input class="form-control" ng-model="alunoEdit.email" type="email" name="email" value="{{alunoEdit.email}}" ng-disabled="!alunoEdit.emailSelected" ng-required="true"/>
+            <div class="input-group-text mb-3">
+              <input type="checkbox" ng-model="alunoEdit.emailSelected"/>
+            </div>
           </div>
-        </div>
-        <label class="form-label">Idade:</label>
-        <div class="input-group">
-          <input class="form-control" ng-model="alunoEdit.age" name="age" value="{{alunoEdit.age}}" ng-disabled="!alunoEdit.ageSelected"/>
-          <div class="input-group-text mb-3">
-            <input type="checkbox" ng-model="alunoEdit.ageSelected"/>
+          <label class="form-label">Idade:</label>
+          <div class="input-group">
+            <input class="form-control" ng-model="alunoEdit.age" name="age" value="{{alunoEdit.age}}" ng-disabled="!alunoEdit.ageSelected" ng-required="true" type="number"/>
+            <div class="input-group-text mb-3">
+              <input type="checkbox" ng-model="alunoEdit.ageSelected"/>
+            </div>
           </div>
-        </div>
+        </form>
         <div ng-if="alertEditAluno" class="alert alert-danger">
-          Email já está em uso!
+          Email inválido!
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" ng-click="editAluno(alunoEdit)" ng-disabled="!(alunoEdit.nameSelected || alunoEdit.surnameSelected || alunoEdit.emailSelected || alunoEdit.ageSelected)">Editar</button>
+        <button type="button" class="btn btn-primary" ng-click="editAluno(alunoEdit)" ng-disabled="!(alunoEdit.nameSelected || alunoEdit.surnameSelected || alunoEdit.emailSelected || alunoEdit.ageSelected) || editAlunoForm.$invalid">Editar</button>
         <button type="button" class="btn btn-danger" ng-click="setModalAlertDeleteAluno()">Apagar</button>
       </div>
     </div>

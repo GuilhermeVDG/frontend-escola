@@ -6,7 +6,6 @@
       <input class="form-control" type="text" placeholder="Nome" ng-required="true" ng-model="cadastro.name" name="name" />
       <input class="form-control" type="password" placeholder="Senha" ng-required="true" ng-model="cadastro.password" name="password" ng-minlength="6" />
     </form>
-    {{error}}
     <button class="btn btn-danger" ng-disabled="cadastroForm.$invalid" ng-click="submitCadastro(cadastro)">Cadastrar</button>
     <div ng-if="!cadastro.email && !cadastroForm.email.$pristine" class="alert alert-danger">
       Insira um email válido!
