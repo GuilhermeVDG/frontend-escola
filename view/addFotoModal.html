@@ -19,7 +19,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-primary" ng-click="sendImg(aluno, imageSrc)">Adicionar</button>
+        <button class="btn btn-primary" ng-click="sendImg(aluno, imageSrc)" ng-disabled="!imageSrc || !aluno">Adicionar</button>
       </div>
     </div>
   </div>
