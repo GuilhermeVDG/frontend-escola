@@ -6,32 +6,34 @@
         <button type="button" class="btn btn-close" ng-click="setModalEditUser()"></button>
       </div>
       <div class="modal-body">
-        <label class="form-label">Nome:</label>
-        <div class="input-group">
-          <input class="form-control" ng-model="userEdit.name" name="name" value="{{userEdit.name}}" ng-disabled="!userEdit.nameSelected"/>
-          <div class="input-group-text mb-3">
-            <input type="checkbox" ng-model="userEdit.nameSelected"/>
+        <form name="editUserForm">
+          <label class="form-label">Nome:</label>
+          <div class="input-group">
+            <input class="form-control" ng-model="userEdit.name" name="name" value="{{userEdit.name}}" ng-disabled="!userEdit.nameSelected" ng-required="userEdit.nameSelected" ng-minlength="3" ng-maxlength="30"/>
+            <div class="input-group-text mb-3">
+              <input type="checkbox" ng-model="userEdit.nameSelected"/>
+            </div>
           </div>
-        </div>
-        <label class="form-label">Email:</label>
-        <div class="input-group">
-          <input class="form-control" ng-model="userEdit.email" name="email" value="{{userEdit.email}}" ng-disabled="!userEdit.emailSelected"/>
-          <div class="input-group-text mb-3">
-            <input type="checkbox" ng-model="userEdit.emailSelected"/>
+          <label class="form-label">Email:</label>
+          <div class="input-group">
+            <input class="form-control" ng-model="userEdit.email" name="email" value="{{userEdit.email}}" ng-disabled="!userEdit.emailSelected" ng-required="userEdit.emailSelected" type="email"/>
+            <div class="input-group-text mb-3">
+              <input type="checkbox" ng-model="userEdit.emailSelected"/>
+            </div>
           </div>
-        </div>
-        <button type="button" class="btn btn-secondary button-change-password" ng-click="setChangePassword()">Alterar Senha</button>
-        <label class="form-label" ng-if="changePasswordSelected">Senha Atual:</label>
-        <div class="input-group" ng-if="changePasswordSelected">
-          <input class="form-control" ng-model="userEdit.oldPassword" name="oldPassword" value="{{userEdit.oldPassword}}"type="password"/>
-        </div>
-        <label class="form-label" ng-if="changePasswordSelected">Nova Senha:</label>
-        <div class="input-group" ng-if="changePasswordSelected">
-          <input class="form-control" ng-model="userEdit.password" name="password" value="{{userEdit.password}}" type="password"/>
-        </div>
+          <button type="button" class="btn btn-secondary button-change-password" ng-click="setChangePassword()">Alterar Senha</button>
+          <label class="form-label" ng-if="changePasswordSelected">Senha Atual:</label>
+          <div class="input-group" ng-if="changePasswordSelected">
+            <input class="form-control" ng-model="userEdit.oldPassword" name="oldPassword" value="{{userEdit.oldPassword}}" type="password" ng-required="changePasswordSelected" ng-minlength="6"/>
+          </div>
+          <label class="form-label" ng-if="changePasswordSelected">Nova Senha:</label>
+          <div class="input-group" ng-if="changePasswordSelected">
+            <input class="form-control" ng-model="userEdit.password" name="password" value="{{userEdit.password}}" type="password" ng-required="changePasswordSelected" ng-minlength="6"/>
+          </div>
+        </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" ng-click="editUser(userEdit)">Editar</button>
+        <button type="button" class="btn btn-primary" ng-click="editUser(userEdit)" ng-disabled="editUserForm.$invalid || !(userEdit.nameSelected || userEdit.emailSelected)">Editar</button>
       </div>
     </div>
   </div>
